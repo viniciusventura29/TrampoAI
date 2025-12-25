@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mcpRoutes from './routes/mcp.js';
+import chatRoutes from './routes/chat.js';
 import { mcpManager } from './services/mcp-manager.js';
 import { cleanupOldSessions } from './services/database.js';
 
@@ -18,6 +19,7 @@ app.use(cors({
 app.use(express.json());
 
 app.use('/api/mcp', mcpRoutes);
+app.use('/api/chat', chatRoutes);
 
 app.get('/api/health', (_, res) => {
   res.json({ status: 'ok' });
